@@ -1,10 +1,10 @@
 import React from 'react';
-import { useTheme } from '../context/ThemeContext'; // Importing the theme context
+import { useTheme } from '../context/ThemeContext'; 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 
-import sunImage from '../Images/sun.png'; 
+import sunImage from '../Images/sun-light.png'; 
 import moonImage from '../Images/moon.png'; 
 
 import userImage from '../Images/user.png';
@@ -63,7 +63,6 @@ function Navbar( {currentpage} ) {
 
                 </div>
             </nav>
-            <p>meow</p>
         </div>
     );
 }
