@@ -1,11 +1,18 @@
 // src/context/ThemeContext.js
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-    const [theme, setTheme] = useState('light'); // Default theme
+    // Get the theme from localStorage or default to 'light'
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
+    // Effect to sync theme with localStorage
+    useEffect(() => {
+        localStorage.setItem('theme', theme); // Store the theme in localStorage
+    }, [theme]); // Runs only when `theme` changes
+
+    // Function to toggle theme
     const toggleTheme = () => {
         setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
     };
@@ -17,6 +24,7 @@ export const ThemeProvider = ({ children }) => {
     );
 };
 
+// Custom hook to use the ThemeContext
 export const useTheme = () => {
     const context = useContext(ThemeContext);
     if (!context) {
