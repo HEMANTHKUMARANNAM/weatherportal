@@ -4,21 +4,36 @@ import { useTheme } from '../context/ThemeContext';
 import sunlight from '../Images/sun-light.png';
 import sundark from '../Images/sun-dark.png';
 
-const CurrentWeather = () => {
+const CurrentWeather = ( {weatherdata} ) => {
   const { theme } = useTheme();
-  const [weatherData, setWeatherData] = useState(null);
+
+  const [weatherInfo, setWeatherInfo] = useState({});
+
+
+  
 
   useEffect(() => {
-    // Retrieve and parse weather data from local storage
-    const storedData = localStorage.getItem('weatherdata');
-    if (storedData) {
-      setWeatherData(JSON.parse(storedData));
-    }
-  }, []);
+    console.log("meow");
+    weatherdata = JSON.parse(weatherdata);
+    
+    if (weatherdata ) {
 
-  // Optional chaining to avoid errors if weatherData is null
-  const temperature = weatherData?.main?.temp; // Access temperature
-  const weatherDescription = weatherData?.weather?.[0]?.description; // Access weather description
+      console.log(weatherdata.weather[0].description);
+
+      setWeatherInfo({
+        
+        temperature : weatherdata.main.temp,
+        description : weatherdata.weather[0].description,
+        name : weatherdata.name,
+        icon : weatherdata.weather[0].icon
+        
+      });
+    }
+
+
+  }, [weatherdata]);
+
+  
 
   return (
     <div className="col-12">
@@ -29,10 +44,10 @@ const CurrentWeather = () => {
         <div className="d-flex justify-content-between">
           <div className="card-body">
             <p>Now</p>
-            {temperature ? ( 
+            {weatherInfo.temperature ? ( 
               <>
-                <h2>{temperature} °C</h2>
-                <p>{weatherDescription || "Weather description not available"}</p>
+                <h2>{weatherInfo.temperature} °C</h2>
+                <p>{weatherInfo.description || "Weather description not available"}</p>
                 <div>
                   <p>Wednesday, 1 Mar</p>
                 </div>
@@ -47,7 +62,7 @@ const CurrentWeather = () => {
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '4.5vh' }}
           >
             <img 
-              src={theme === "light" ? sunlight : sundark} 
+              src= {  `https://openweathermap.org/img/wn/${weatherInfo.icon}@2x.png` } 
               alt={theme === "light" ? "Sunlight" : "Sun in Dark Mode"} 
               style={{ width: '100px', height: '100px', objectFit: 'cover' }} 
             />
@@ -59,7 +74,7 @@ const CurrentWeather = () => {
         className={`card ${theme === "light" ? "bg-light text-dark" : "bg-dark text-light"}`} 
         style={{ textAlign: 'center' }}
       >
-        <p>Washington, US</p>
+        <p>{weatherInfo.name}</p>
       </div>
     </div>
   );
