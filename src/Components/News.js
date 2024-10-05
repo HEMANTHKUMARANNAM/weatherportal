@@ -1,12 +1,16 @@
-import { useEffect , useState } from "react";
-import { useTheme } from '../context/ThemeContext';
+import { useEffect , useState , useContext } from "react";
+import { SharedContext } from '../context/SharedContext';
 
 
 import Newsitem from "./Newsitems";
 
+
+
 function News() {
 
-    const { theme } = useTheme();
+  const { sharedValue } = useContext(SharedContext);
+
+
 
     const [articles, setArticles] = useState([]);
 
@@ -15,9 +19,9 @@ function News() {
 
     
     useEffect(() => {
-        const city = localStorage.getItem("city") || "Nellore";
+        const city = sharedValue || "Nellore";
 
-        const api = `https://newsapi.org/v2/everything?q=Nellore%20weather&qInTitle=Nellore&sortBy=publishedAt&language=en&apiKey=23c8857075cc43caa2aff0b0c2d3f1c0`;
+        const api = `https://newsapi.org/v2/everything?q=${city}%20weather&qInTitle=Nellore&sortBy=publishedAt&language=en&apiKey=23c8857075cc43caa2aff0b0c2d3f1c0`;
 
         fetch(api)
       .then((response) => {
@@ -47,7 +51,7 @@ function News() {
         setError('Failed to fetch articles.');
       });
 
-    }, []); 
+    }, [sharedValue]); 
 
 
 

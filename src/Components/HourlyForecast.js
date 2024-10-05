@@ -21,12 +21,16 @@ const HourlyForecast = ( {forecastdata} ) => {
   
 
   useEffect(() => {
-    console.log("meow");
+    console.log("meow2");
 
     let data = [];
   
     
     if (forecastdata ) {
+
+      // forecastdata = JSON.parse(forecastdata);
+
+      console.log(forecastdata);
 
       const meow = forecastdata.list;
 

@@ -9,6 +9,8 @@ import { useState , useEffect } from 'react';
 import News from '../Components/News';
 import NewsHeader from '../Components/NewsHeader';
 
+import  {SharedProvider}  from '../context/SharedContext';
+
 
 function Home() {
 
@@ -17,6 +19,8 @@ function Home() {
 
 
     return ( 
+
+        <SharedProvider>
         <div>
             <Navbar currentpage = "home" ></Navbar>
             <WeatherDashboard></WeatherDashboard>
@@ -26,6 +30,8 @@ function Home() {
             <News></News>
             <Footer></Footer>
         </div>
+
+        </SharedProvider>
      );
 }
 

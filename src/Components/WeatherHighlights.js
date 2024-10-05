@@ -131,7 +131,7 @@ const WeatherHighlights = ( { weatherdata } ) => {
 
                  <p>sunset</p>
 
-                 <p> {  weatherInfo.sunrise}</p>
+                 <p> {  weatherInfo.sunset}</p>
 
 
                 </div>
@@ -255,3 +255,5 @@ const WeatherHighlights = ( { weatherdata } ) => {
 };
 
 export default WeatherHighlights;
+
+
