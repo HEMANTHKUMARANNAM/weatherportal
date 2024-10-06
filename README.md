@@ -11,6 +11,4 @@ npm install gh-pages
 
 npm install firebase
 
-
-
 npm install axios
