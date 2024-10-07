@@ -19,7 +19,7 @@ function News() {
     useEffect(() => {
         const city = sharedValue || "Nellore";
 
-        const apikey = '9e38d3d3c936fb6762a207ae82f779b1';
+        const apikey = process.env.REACT_APP_NEWS_API_KEY;
 
         const api = `https://gnews.io/api/v4/search?q=${city}&token=${apikey}`;
 
@@ -85,4 +85,4 @@ function News() {
      );
 }
 
-export default News
+export default News;

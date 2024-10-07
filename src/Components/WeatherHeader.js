@@ -14,9 +14,6 @@ const WeatherHeader = () => {
   const { theme } = useTheme();
 
 
-
-
-
   const formatCityName = (city) => {
     return city
       .replace(/[^a-zA-Z\s]/g, '') // Remove special characters
@@ -30,12 +27,13 @@ const WeatherHeader = () => {
   const getWeatherData = async (city) => {
     const formattedCity = formatCityName(city);
 
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${formattedCity}&appid=${API_KEY}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${formattedCity}&appid=${API_KEY}&units=metric`;
 
     try {
       await axios.get(url);
       console.log(`City: ${formattedCity}`);
       setSharedValue(formattedCity);
+      localStorage.setItem("city" , formattedCity);
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
@@ -44,13 +42,12 @@ const WeatherHeader = () => {
   const handleSearch = () => {
     if (city) {
       getWeatherData(city);
-      // Do not clear the input; allow user to see the current city in the search bar
     }
   };
 
   useEffect(() => {
     getWeatherData(city); // Fetch weather data for default city on component mount
-  });
+  }, [city]);
 
   return (
     <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">

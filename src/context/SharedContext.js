@@ -7,7 +7,7 @@ const SharedContext = createContext();
 
 // Provider Component
 const SharedProvider = ({ children }) => {
-  const [sharedValue, setSharedValue] = useState('');
+  const [sharedValue, setSharedValue] = useState( localStorage.getItem('city') ||'');
 
   return (
     <SharedContext.Provider value={{ sharedValue, setSharedValue }}>
