@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/weatherportal/static/css/main.5ce482dc.css",
-    "main.js": "/weatherportal/static/js/main.8cc4a54b.js",
+    "main.js": "/weatherportal/static/js/main.9379356d.js",
     "static/js/453.438e8ca3.chunk.js": "/weatherportal/static/js/453.438e8ca3.chunk.js",
     "static/media/pressure.png": "/weatherportal/static/media/pressure.d0f978e1bf94565f3bf4.png",
     "static/media/sunrise.png": "/weatherportal/static/media/sunrise.30bdb007ce57dd4e9a31.png",
@@ -21,11 +21,11 @@
     "static/media/user.png": "/weatherportal/static/media/user.9e5ca7c88720544fd9d1.png",
     "index.html": "/weatherportal/index.html",
     "main.5ce482dc.css.map": "/weatherportal/static/css/main.5ce482dc.css.map",
-    "main.8cc4a54b.js.map": "/weatherportal/static/js/main.8cc4a54b.js.map",
+    "main.9379356d.js.map": "/weatherportal/static/js/main.9379356d.js.map",
     "453.438e8ca3.chunk.js.map": "/weatherportal/static/js/453.438e8ca3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5ce482dc.css",
-    "static/js/main.8cc4a54b.js"
+    "static/js/main.9379356d.js"
   ]
 }
