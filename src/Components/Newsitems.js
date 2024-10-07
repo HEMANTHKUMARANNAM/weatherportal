@@ -24,7 +24,7 @@ function Newsitems({ title, description, url, imageUrl }) {
             <div className="row row-cols-2">
                 <div className="col">
                     <img
-                        src={imageUrl || "https://via.placeholder.com/150"}
+                        src={imageUrl}
                         className="card-img-top"
                         alt="News"
                         style={{ objectFit: "cover", height: "300px" }}
