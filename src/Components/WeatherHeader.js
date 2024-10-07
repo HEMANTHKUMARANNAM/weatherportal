@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { FaSearch } from 'react-icons/fa'; // Importing a search icon from react-icons
+import { FaSearch } from 'react-icons/fa';
 import { useTheme } from '../context/ThemeContext';
 
-import { SharedContext } from '../context/SharedContext'; // Import SharedContext explicitly
-
+import { SharedContext } from '../context/SharedContext';
 
 const WeatherHeader = () => {
   const [city, setCity] = useState('Nellore'); // Default city set to Nellore
-  const [weatherData, setWeatherData] = useState(null);
   const API_KEY = 'fc88c3d4dbff34df7ce72ef2036e4dfb'; // Replace with your API key
 
   const { setSharedValue } = useContext(SharedContext); // Access setSharedValue from context
@@ -35,16 +33,11 @@ const WeatherHeader = () => {
     const url = `http://api.openweathermap.org/data/2.5/weather?q=${formattedCity}&appid=${API_KEY}&units=metric`;
 
     try {
-      const response = await axios.get(url);
-      setWeatherData(response.data);
+      await axios.get(url);
       console.log(`City: ${formattedCity}`);
-      console.log(`Temperature: ${response.data.main.temp}°C`);
-      console.log(`Weather: ${response.data.weather[0].description}`);
-      console.log(`Wind Speed: ${response.data.wind.speed} m/s`);
       setSharedValue(formattedCity);
     } catch (error) {
       console.error('Error fetching weather data:', error);
-      setWeatherData(null);
     }
   };
 
@@ -57,7 +50,7 @@ const WeatherHeader = () => {
 
   useEffect(() => {
     getWeatherData(city); // Fetch weather data for default city on component mount
-  }, []);
+  });
 
   return (
     <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
@@ -84,7 +77,7 @@ const WeatherHeader = () => {
             borderRadius: '0 5px 5px 0',
           }}
         >
-          <FaSearch /> {/* Search icon */}
+          <FaSearch />
         </button>
       </div>
       {/* <button className="btn btn-secondary" type="button">

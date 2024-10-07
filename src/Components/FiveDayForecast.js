@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
-import sundark from '../Images/sun-dark.png';
-import sunlight from '../Images/sun-light.png'; // Assuming you have this for the light theme
 
 const FiveDayForecast = ({ forecastdata }) => {
   const { theme } = useTheme();
@@ -21,8 +19,6 @@ const FiveDayForecast = ({ forecastdata }) => {
 
       forecastdata.list.forEach((element) => {
         const formattedDate = convertDate(element.dt_txt.substring(0, 10));
-
-        // Check if date is already in the list (to prevent duplicates)
         if (list.indexOf(formattedDate) === -1) {
           const elementData = {
             date: formattedDate,
@@ -39,7 +35,6 @@ const FiveDayForecast = ({ forecastdata }) => {
     }
   }, [forecastdata]);
 
-  const icon = theme === 'light' ? sunlight : sundark; // Dynamically set icon based on theme
 
   return (
     <div className="col-12">

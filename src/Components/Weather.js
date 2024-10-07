@@ -13,12 +13,7 @@ import { SharedContext } from '../context/SharedContext';
 const Weather = () => {
 
   const { sharedValue } = useContext(SharedContext);
-
-
-
     const [weatherData, setWeatherData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
 
     const [ forecast, setForecast] = useState(null);
 
@@ -36,9 +31,9 @@ const Weather = () => {
           setWeatherData(JSON.stringify(data));
           console.log( JSON.stringify(data) );
         } catch (error) {
-          setError(error.message);
+          // setError(error.message);
         } finally {
-          setLoading(false);
+          // setLoading(false);
         }
       };
 
@@ -54,16 +49,11 @@ const Weather = () => {
           setForecast(data);
           console.log( JSON.stringify(data) );
         } catch (error) {
-          setError(error.message);
+          // setError(error.message);
         } finally {
-          setLoading(false);
+          // setLoading(false);
         }
       };
-
-
-
-
-      
 
       fetchData();
       fetchData2();
