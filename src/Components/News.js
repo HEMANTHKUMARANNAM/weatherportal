@@ -1,47 +1,86 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect , useState , useContext } from "react";
+import { SharedContext } from '../context/SharedContext';
 
-const News = () => {
+
+import Newsitem from "./Newsitems";
+
+
+
+function News() {
+
+  const { sharedValue } = useContext(SharedContext);
+
     const [articles, setArticles] = useState([]);
+
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
 
-    const apiKey = process.env.REACT_APP_NEWS_API_KEY; // Store your API key in an .env file
-
+    
     useEffect(() => {
-      const fetchNews = async () => {
-        try {
-            const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`);
-            setArticles(response.data.articles);
-            setLoading(false);
-        } catch (err) {
-            setError('Failed to fetch news');
-            setLoading(false);
-            console.error(err); // Log the error for debugging
+        const city = sharedValue || "Nellore";
+
+        const api = `https://newsapi.org/v2/everything?q=India%20weather&qInTitle=Nellore&sortBy=publishedAt&language=en&apiKey=23c8857075cc43caa2aff0b0c2d3f1c0`;
+
+        fetch(api)
+      .then((response) => {
+        console.log('Response status:', response.status);
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.statusText}`);
         }
-    };
-    
-    
-        fetchNews();
-    }, [apiKey]);
+        return response.json();
+      })
+      .then((data) => {
+        console.log('Fetched data:', data);
+        if (data.articles) {
+          const validArticles = data.articles.filter(
+            (article) =>
+              article.title &&
+              article.description &&
+              article.url &&
+              article.urlToImage
+          );
+          setArticles(validArticles);
+        } else {
+          setError('No articles found.');
+        }
+      })
+      .catch((error) => {
+        console.error('Fetch error:', error);
+        setError('Failed to fetch articles.');
+      });
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
+    }, [sharedValue]); 
 
-    return (
+
+
+
+
+
+
+
+
+
+    return ( 
         <div>
-            <h1>Top News Articles</h1>
-            <ul>
-                {articles.map((article, index) => (
-                    <li key={index}>
-                        <h2>{article.title}</h2>
-                        <p>{article.description}</p>
-                        <a href={article.url} target="_blank" rel="noopener noreferrer">Read more</a>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
-};
+      <div className="container ">
+  
+            {articles.map((article) => (
+              <div
+                className="col"
+                key={article.url}
+              >
+                <Newsitem
+                  title={article.title}
+                  description={article.description}
+                  url={article.url}
+                  imageUrl={article.urlToImage} // Using correct prop for image
+                />
+              </div>
+            ))}
+         
+      </div>
+    </div>
+     );
+}
 
-export default News;
+export default News

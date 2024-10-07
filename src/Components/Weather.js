@@ -7,6 +7,7 @@ import FiveDayForecast from './FiveDayForecast';
 import HourlyForecast from './HourlyForecast';
 
 import { SharedContext } from '../context/SharedContext';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -16,12 +17,17 @@ const Weather = () => {
     const [weatherData, setWeatherData] = useState(null);
 
     const [ forecast, setForecast] = useState(null);
+    const navigate = useNavigate();
 
 
   
     useEffect(() => {
       const fetchData = async () => {
         try {
+          if (!navigator.onLine) {
+            navigate('/offline'); // Redirect to offline page within your app
+            return;
+          }
           const city = sharedValue || "Nellore";
           const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=fc88c3d4dbff34df7ce72ef2036e4dfb&units=metric`); // Update with your API
           if (!response.ok) {
@@ -39,6 +45,10 @@ const Weather = () => {
 
       const fetchData2 = async () => {
         try {
+          if (!navigator.onLine) {
+            navigate('/offline'); // Redirect to offline page within your app
+            return;
+          }
           const city = sharedValue || "Nellore";
           const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=fc88c3d4dbff34df7ce72ef2036e4dfb&units=metric`); // Update with your API
           if (!response.ok) {

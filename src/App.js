@@ -5,6 +5,9 @@ import Home from '../src/Pages/Home';
 import Dashboard from '../src/Pages/Dashboard';
 // import './App.css';
 
+import OfflinePage from './Pages/OfflinePage';
+
+
 import './styles.css'
 
 import { ThemeProvider, useTheme } from './context/ThemeContext'; // Adjust the path as necessary
@@ -29,6 +32,7 @@ const MainApp = () => {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Dashboard />} />
+        <Route path="/offline" element={<OfflinePage />} />
         {/* Redirect to /home if the route doesn't match */}
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
