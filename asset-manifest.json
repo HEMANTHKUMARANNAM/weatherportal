@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/weatherportal/static/css/main.5ce482dc.css",
+    "main.js": "/weatherportal/static/js/main.68ce930c.js",
+    "static/js/453.438e8ca3.chunk.js": "/weatherportal/static/js/453.438e8ca3.chunk.js",
+    "static/media/pressure.png": "/weatherportal/static/media/pressure.d0f978e1bf94565f3bf4.png",
+    "static/media/sunrise.png": "/weatherportal/static/media/sunrise.30bdb007ce57dd4e9a31.png",
+    "static/media/wind-light.png": "/weatherportal/static/media/wind-light.9b862e42b64f6069a29b.png",
+    "static/media/user-light.png": "/weatherportal/static/media/user-light.68efa93716f19ee3c4dd.png",
+    "static/media/visibility-light.png": "/weatherportal/static/media/visibility-light.d186e3c3d5cf3eb8d03c.png",
+    "static/media/sunset.png": "/weatherportal/static/media/sunset.5d635a7aa422d8471ac8.png",
+    "static/media/air-light.png": "/weatherportal/static/media/air-light.a34d54461381b983d34e.png",
+    "static/media/humidity-dark.png": "/weatherportal/static/media/humidity-dark.ddd175a9c3d1cc519e1a.png",
+    "static/media/humidity-light.png": "/weatherportal/static/media/humidity-light.ddd175a9c3d1cc519e1a.png",
+    "static/media/moon.png": "/weatherportal/static/media/moon.9166093b11c7feb5c97f.png",
+    "static/media/sun-light.png": "/weatherportal/static/media/sun-light.e61272932b9a7009c04d.png",
+    "static/media/air-dark.png": "/weatherportal/static/media/air-dark.001345ff5333d65a9c71.png",
+    "static/media/visibility-dark.png": "/weatherportal/static/media/visibility-dark.d94a5e22001726a5ee79.png",
+    "static/media/whethericon.png": "/weatherportal/static/media/whethericon.edcac443eabdc3c0c461.png",
+    "static/media/user-dark.png": "/weatherportal/static/media/user-dark.8637359c2f9d498dcd7f.png",
+    "static/media/user.png": "/weatherportal/static/media/user.9e5ca7c88720544fd9d1.png",
+    "index.html": "/weatherportal/index.html",
+    "main.5ce482dc.css.map": "/weatherportal/static/css/main.5ce482dc.css.map",
+    "main.68ce930c.js.map": "/weatherportal/static/js/main.68ce930c.js.map",
+    "453.438e8ca3.chunk.js.map": "/weatherportal/static/js/453.438e8ca3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ce482dc.css",
+    "static/js/main.68ce930c.js"
+  ]
+}
