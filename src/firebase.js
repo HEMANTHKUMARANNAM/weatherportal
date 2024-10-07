@@ -4,6 +4,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
 
+
 // Your Firebase configuration object from Firebase Console
 const firebaseConfig = {
   apiKey: "AIzaSyDMrU5Yq7STMM0BL4V69q_QTImh-ZcZ_do",

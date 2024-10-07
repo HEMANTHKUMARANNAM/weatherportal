@@ -6,10 +6,10 @@ import { useTheme } from '../context/ThemeContext';
 import { SharedContext } from '../context/SharedContext';
 
 const WeatherHeader = () => {
-  const [city, setCity] = useState('Nellore'); // Default city set to Nellore
+  const [city, setCity] = useState( localStorage.getItem("hometown") || 'Nellore'); // Default city set to Nellore
   const API_KEY = 'fc88c3d4dbff34df7ce72ef2036e4dfb'; // Replace with your API key
 
-  const { setSharedValue } = useContext(SharedContext); // Access setSharedValue from context
+  const { setSharedValue ,  sharedValue } = useContext(SharedContext); // Access setSharedValue from context
 
   const { theme } = useTheme();
 
@@ -47,7 +47,8 @@ const WeatherHeader = () => {
 
   useEffect(() => {
     getWeatherData(city); // Fetch weather data for default city on component mount
-  }, [city]);
+    console.log(sharedValue);
+  }, [city , localStorage.getItem("hometown") ]);
 
   return (
     <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
