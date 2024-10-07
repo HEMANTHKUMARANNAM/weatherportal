@@ -29,7 +29,7 @@ const Weather = () => {
             return;
           }
           const city = sharedValue || "Nellore";
-          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY} &units=metric`); // Update with your API
+          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`); // Update with your API
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
@@ -50,7 +50,7 @@ const Weather = () => {
             return;
           }
           const city = sharedValue || "Nellore";
-          const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY }&units=metric`); // Update with your API
+          const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`); // Update with your API
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
