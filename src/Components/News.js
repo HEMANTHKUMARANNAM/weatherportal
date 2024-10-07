@@ -19,7 +19,9 @@ function News() {
     useEffect(() => {
         const city = sharedValue || "Nellore";
 
-        const api = `https://newsapi.org/v2/everything?q=India%20weather&qInTitle=Nellore&sortBy=publishedAt&language=en&apiKey=23c8857075cc43caa2aff0b0c2d3f1c0`;
+        const apikey = '9e38d3d3c936fb6762a207ae82f779b1';
+
+        const api = `https://gnews.io/api/v4/search?q=${city}&token=${apikey}`;
 
         fetch(api)
       .then((response) => {
@@ -37,7 +39,7 @@ function News() {
               article.title &&
               article.description &&
               article.url &&
-              article.urlToImage
+              article.image
           );
           setArticles(validArticles);
         } else {
@@ -73,7 +75,7 @@ function News() {
                   title={article.title}
                   description={article.description}
                   url={article.url}
-                  imageUrl={article.urlToImage} // Using correct prop for image
+                  imageUrl={article.image} // Using correct prop for image
                 />
               </div>
             ))}
